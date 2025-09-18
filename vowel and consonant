@@ -1,0 +1,15 @@
+int main () {
+    char letter;
+    printf("enter the letter: \n");
+    scanf("%c",&letter);
+    if (letter == 'a'|| letter == 'e'|| letter == 'i'|| letter == 'o'|| letter == 'u') {
+        printf("Vowel\n");
+    }
+    else if ((letter >='a' && letter <= 'z') ) {
+        printf("Consonant\n");
+    }
+    else {
+        printf("not a alphabet");
+    }
+    return 0;
+}
