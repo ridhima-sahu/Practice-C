@@ -1,0 +1,16 @@
+int main () {
+   int x,i;
+   int fact = 1;
+    printf("Enter the number: ");
+    scanf("%d", &x);
+
+    if (x<0) {
+        printf("factorial is not defined for negative number\n");
+    } else {
+        for (i = 1; i <= x; i++) {
+            fact = fact * i;
+        }
+        printf("Factorial is %d =%11d\n", x, fact);
+    }
+    return 0;
+}
