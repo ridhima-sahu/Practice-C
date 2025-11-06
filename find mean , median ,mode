@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+// Function to sort the array (for median & mode)
+void sortArray(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// Function to calculate mean
+float findMean(int arr[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += arr[i];
+    return (float)sum / n;
+}
+
+// Function to calculate median
+float findMedian(int arr[], int n) {
+    sortArray(arr, n);
+    if (n % 2 == 0)
+        return (arr[n / 2 - 1] + arr[n / 2]) / 2.0;
+    else
+        return arr[n / 2];
+}
+
+// Function to calculate mode
+int findMode(int arr[], int n) {
+    int maxCount = 0, mode = arr[0];
+    for (int i = 0; i < n; i++) {
+        int count = 0;
+        for (int j = 0; j < n; j++) {
+            if (arr[j] == arr[i])
+                count++;
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            mode = arr[i];
+        }
+    }
+    return mode;
+}
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d numbers:\n", n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    float mean = findMean(arr, n);
+    float median = findMedian(arr, n);
+    int mode = findMode(arr, n);
+
+    printf("\nMean = %.2f\n", mean);
+    printf("Median = %.2f\n", median);
+    printf("Mode = %d\n", mode);
+
+    return 0;
+}
