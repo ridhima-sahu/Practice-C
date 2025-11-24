@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int main() {
+    int choice;
+    float weight, height, bmi;
+
+    printf("====================================\n");
+    printf("          BMI CALCULATOR\n");
+    printf("====================================\n");
+
+    // BMI Category Table
+    printf("\nBMI CATEGORY TABLE:\n");
+    printf("------------------------------------\n");
+    printf(" BMI < 18.5        : Underweight\n");
+    printf(" 18.5 to 24.9       : Normal weight\n");
+    printf(" 25.0 to 29.9       : Overweight\n");
+    printf(" 30.0 and above    : Obesity\n");
+    printf("------------------------------------\n");
+
+    printf("\nChoose Unit System:\n");
+    printf("1. Metric (kg, meters)\n");
+    printf("2. Metric (kg, centimeters)\n");
+    printf("3. Imperial (lbs, inches)\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        // Metric: kg + meters
+        printf("Enter weight (kg): ");
+        scanf("%f", &weight);
+        printf("Enter height (meters): ");
+        scanf("%f", &height);
+        bmi = weight / (height * height);
+
+    } else if (choice == 2) {
+        // Metric: kg + centimeters
+        printf("Enter weight (kg): ");
+        scanf("%f", &weight);
+        printf("Enter height (cm): ");
+        scanf("%f", &height);
+        height = height / 100.0;  // convert cm to meters
+        bmi = weight / (height * height);
+
+    } else if (choice == 3) {
+        // Imperial: lbs + inches
+        printf("Enter weight (lbs): ");
+        scanf("%f", &weight);
+        printf("Enter height (inches): ");
+        scanf("%f", &height);
+        bmi = 703 * (weight / (height * height));
+
+    } else {
+        printf("Invalid choice!\n");
+        return 0;
+    }
+
+    printf("\n====================================\n");
+    printf("Your BMI is: %.2f\n", bmi);
+
+    // Category Decision
+    if (bmi < 18.5)
+        printf("Category: Underweight\n");
+    else if (bmi < 24.9)
+        printf("Category: Normal weight\n");
+    else if (bmi < 29.9)
+        printf("Category: Overweight\n");
+    else
+        printf("Category: Obesity\n");
+
+    printf("====================================\n");
+
+    return 0;
+}
